@@ -1,20 +1,20 @@
 #!/bin/bash
 
 # Define backup directory and filename with today's date
-BACKUP_DIR="/root/pvebackup"
+BACKUP_DIR="./pvebackup"
 DATE=$(date +"%Y%m%d")
 BACKUP_FILE="$BACKUP_DIR/$DATE.tar.gz"
 
 # Create the backup directory if it doesn't exist
 mkdir -p "$BACKUP_DIR"
 
-# Step 1: Copy config.db to backup directory
+# Copy config.db to backup directory
 cp /var/lib/pve-cluster/config.db "$BACKUP_DIR/"
 
-# Step 2: Create a compressed archive of /etc/pve
+# Create a compressed archive of /etc/pve
 tar -czvf "$BACKUP_DIR/pve.tar.gz" /etc/pve
 
-# Step 3: Bundle both files into a final backup
+# Bundle both files into a final backup
 tar -czvf "$BACKUP_FILE" "$BACKUP_DIR/config.db" "$BACKUP_DIR/pve.tar.gz"
 
 # Clean up intermediate files
