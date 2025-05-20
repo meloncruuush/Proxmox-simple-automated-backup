@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Define backup directory and filename with today's date
-BACKUP_DIR="./pvebackup"
+BACKUP_DIR="/root/Proxmox-simple-automated-backup/pvebackup"
 DATE=$(date +"%Y%m%d")
 BACKUP_FILE="$BACKUP_DIR/$DATE.tar.gz"
 
